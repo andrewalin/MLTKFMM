@@ -1,0 +1,4 @@
+# MLTK Glossary for Mere Mortals
+## PCA 
+magically reduce to a smaller number of dimensions, capturing the 'essence' (not lossless) with less data.  
+"Principal Component Analysis"
