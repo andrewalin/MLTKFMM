@@ -23,3 +23,6 @@ Retrieve data from a Lookup. This could work for a CSV or a KVstore lookup.
 | inputlookup ______.csv 
 | stats count by http_user_agent
 ```
+---
+>💡For simplicity, the previous examples are if you only want to return a single column of `http_user_agent` values.
+It would look different if additional columns are needed, e.g. counts of requests involving each `http_user_agent` value.
