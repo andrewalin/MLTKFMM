@@ -70,6 +70,6 @@ Not exactly the same but see https://en.wikipedia.org/wiki/Bag-of-words_model fo
 ```
 
 ## Clustering ##
-<em>Now that you have vectors, send it to a Clustering algorithm! There's a large family of ones ending in "Means", including the old faituful KMeans. It works great but has the caveat that it depends on you to choose K --  the desired number of clusters.</em>
+<em>Now that you have vectors, send it to a Clustering algorithm! There's a large family of ones ending in "Means", including the old faithful KMeans. It works great but has the caveat that it depends on you to choose K --  the desired number of clusters.</em>
 <br>
 <br>
