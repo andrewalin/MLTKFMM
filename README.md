@@ -26,3 +26,18 @@ Retrieve data from a Lookup. This could work for a CSV or a KVstore lookup.
 ---
 >💡For simplicity, the previous examples are if you only want to return a single column of `http_user_agent` values.
 It would look different if additional columns are needed, e.g. counts of requests involving each `http_user_agent` value.
+
+## Gather Data ##
+Using a function to convert non-numerical data (e.g. a string) to an integer.
+```
+| eval len_http_user_agent = len(http_user_agent)
+```
+---
+SplunkBase purpose-built parser apps, for example to parse a URL into it's consituent parts that can be vectorized (e.g. by `len()`) as well as metrics that are already numeric.
+Note that the first line simply hardcodes the literal string "mozilla" to be passed to the function. See https://splunkbase.splunk.com/app/2734
+See pre-recorded demo.
+Other examples:
+```
+| eval list="mozilla" 
+| `ut_parse_extended(url,list)`
+```
