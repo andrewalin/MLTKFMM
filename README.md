@@ -7,6 +7,9 @@ Companion for "MLTK for Mere Mortals" conference talk at Splunk's .conf2025
 3. Clustering
 
 ## Gather Data ##
+<em>Nothing particularly 'ML' at this stage; just starting from ground zero and getting some raw data to play with.</em>
+<br>
+<br>
 Conventional method. Actual index and sourcetype values will depend on your particular environment.
 ```
 index=____ AND sourcetype=_____ 
@@ -28,6 +31,9 @@ Retrieve data from a Lookup. This could work for a CSV or a KVstore lookup.
 It would look different if additional columns are needed, e.g. counts of requests involving each `http_user_agent` value.
 
 ## Vectorize ##
+<em>Now that you have some raw data, it requires a translation to speak ML's language -- numbers, in other words!</em>
+<br>
+<br>
 Using a function to convert non-numerical data (e.g. a string) to an integer.
 ```
 | eval len_http_user_agent = len(http_user_agent)
@@ -62,3 +68,8 @@ Not exactly the same but see https://en.wikipedia.org/wiki/Bag-of-words_model fo
 ```
 | fit HashingVectorizer <TEXT>
 ```
+
+## Clustering ##
+<em>Now that you have vectors, send it to a Clustering algorithm! There's a large family of ones ending in "Means", including the old faituful KMeans. It works great but has the caveat that it depends on you to choose K --  the desired number of clusters.</em>
+<br>
+<br>
