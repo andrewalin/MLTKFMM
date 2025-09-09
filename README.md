@@ -62,14 +62,55 @@ Both TFIDF and HashingVectorizers are essentially "easy button" ways to turn tex
 Not exactly the same but see https://en.wikipedia.org/wiki/Bag-of-words_model for the basic concept.
 
 ```
-| fit TFIDF <TEXT>
+| fit TFIDF <TEXT_FIELD_NAME>
 ```
 
 ```
-| fit HashingVectorizer <TEXT>
+| fit HashingVectorizer <TEXT_FIELD_NAME>
 ```
 
 ## Clustering ##
 <em>Now that you have vectors, send it to a Clustering algorithm! There's a large family of ones ending in "Means", including the old faithful KMeans. It works great but has the caveat that it depends on you to choose K --  the desired number of clusters.</em>
 <br>
 <br>
+
+
+```
+| fit KMeans k=<#_of_clusters> <FEATURE_FIELD_NAMES_AND_GLOBS>
+```
+
+```
+| fit GMeans <FEATURE_FIELD_NAMES_AND_GLOBS>
+```
+
+```
+| fit XMeans <FEATURE_FIELD_NAMES_AND_GLOBS>
+```
+
+```
+| fit DBSCAN <FEATURE_FIELD_NAMES_AND_GLOBS>
+```
+
+### KMeans / XMeans / GMeans → “Centroid-based search jobs” ###
+
+Think of these as clustering approaches where you pre-decide how many clusters you want, like saying “I want N buckets of results.”
+
+KMeans: You tell it “give me 5 buckets”. The math tries to pull events toward the “center of gravity” of each bucket.
+
+XMeans / GMeans: These are like smarter versions that adjust the bucket count if your assumption doesn’t fit the data (like if you said 5, but really 7 groups exist).
+
+Key Concept: Centroid-based clustering assumes the data is kind of “globular” around centers, and the real question is: how many globes?
+
+### DBSCAN → “Density-aware transaction builder” ###
+
+Instead of fixing the number of clusters, DBSCAN says: “I’ll group events together only if they’re tightly packed in time/space/value, and I’ll leave loners out.”
+
+Analogy to Splunk’s `transaction`:
+
+maxspan or maxpause controls how far events can drift apart and still belong to the same session.
+
+DBSCAN works similarly: it has a “neighborhood distance” (ε) and “min number of points” that must be in that distance.
+
+If enough points are close together, they form a cluster; if not, they’re treated as noise.
+
+So DBSCAN feels like building “clusters as transactions,” where proximity and minimum population matter more than pre-deciding how many clusters there should be.
