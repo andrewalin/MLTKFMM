@@ -1,6 +1,8 @@
 # MLTK for Mere Mortals
 Companion for "MLTK for Mere Mortals" conference talk at Splunk's .conf2025
 
+a great link from Splunk: https://docs.splunk.com/Documentation/MLApp/5.6.1/User/Algorithms
+
 ## High-level summary of clustering ##
 1. Gather Data
 2. Vectorize
