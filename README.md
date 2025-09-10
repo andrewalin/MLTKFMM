@@ -93,7 +93,7 @@ Not exactly the same but see https://en.wikipedia.org/wiki/Bag-of-words_model fo
 | fit DBSCAN <FEATURE_FIELD_NAMES_AND_GLOBS>
 ```
 
-### KMeans / XMeans / GMeans → “Centroid-based search jobs” ###
+### KMeans / XMeans / GMeans → “Centroid-based, members of a cluster are close to center of mass” ###
 
 Think of these as clustering approaches where you pre-decide how many clusters you want, like saying “I want N buckets of results.”
 
@@ -103,7 +103,7 @@ XMeans / GMeans: These are like smarter versions that adjust the bucket count if
 
 Key Concept: Centroid-based clustering assumes the data is kind of “globular” around centers, and the real question is: how many globes?
 
-### DBSCAN → “Density-aware transaction builder” ###
+### DBSCAN → “Density-aware, and considering distance to closest cluster member” ###
 
 Instead of fixing the number of clusters, DBSCAN says: “I’ll group events together only if they’re tightly packed in time/space/value, and I’ll leave loners out.”
 
